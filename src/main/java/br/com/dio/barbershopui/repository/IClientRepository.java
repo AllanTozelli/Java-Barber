@@ -16,4 +16,5 @@ public interface IClientRepository extends JpaRepository<ClientEntity, Long> {
     Optional<ClientEntity> findByPhone(final String phone);
 
 
+    String email(String email);
 }
