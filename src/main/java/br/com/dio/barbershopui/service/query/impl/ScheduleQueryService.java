@@ -2,7 +2,7 @@ package br.com.dio.barbershopui.service.query.impl;
 
 import br.com.dio.barbershopui.entity.ScheduleEntity;
 import br.com.dio.barbershopui.exception.NotFoundException;
-import br.com.dio.barbershopui.exception.ScheduleException;
+import br.com.dio.barbershopui.exception.ScheduleInUseException;
 import br.com.dio.barbershopui.repository.IScheduleRepository;
 import br.com.dio.barbershopui.service.query.IScheduleQueryService;
 import lombok.AllArgsConstructor;
@@ -35,7 +35,7 @@ public class ScheduleQueryService implements IScheduleQueryService {
         if(repository.existsStartAtAndEndAt(startAt, endAt)) {
             var message = "Já existe um cliente agendado no horario solicitado";
 
-            throw new ScheduleException(message);
+            throw new ScheduleInUseException(message);
         }
 
     }

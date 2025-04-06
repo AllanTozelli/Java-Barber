@@ -29,19 +29,25 @@ repositories {
 
 var mapStructVersion = "1.6.3"
 
+val flywayVersion = "9.22.3"
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.flywaydb:flyway-core")
-	implementation("org.flywaydb:flyway-database-postgresql")
+	implementation("org.flywaydb:flyway-core:$flywayVersion")
+	implementation("org.flywaydb:flyway-mysql:$flywayVersion")
+
+
 	implementation("org.mapstruct:mapstruct:${mapStructVersion}")
 
 	compileOnly("org.projectlombok:lombok")
 
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 
-	runtimeOnly("org.postgresql:postgresql")
+
+
+	runtimeOnly("mysql:mysql-connector-java:8.0.33")
+
 
 	annotationProcessor("org.mapstruct:mapstruct-processor:${mapStructVersion}")
 	annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
@@ -51,6 +57,7 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
 }
 
 tasks.withType<Test> {
